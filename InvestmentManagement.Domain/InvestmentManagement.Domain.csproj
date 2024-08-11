@@ -10,4 +10,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InvestmentManagement.Entities\InvestmentManagement.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

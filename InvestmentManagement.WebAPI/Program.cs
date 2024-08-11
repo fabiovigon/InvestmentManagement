@@ -21,7 +21,6 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 builder.Services.AddSingleton(typeof(InterfaceGeneric<>), typeof(RepositoriesGenerics<>));
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
