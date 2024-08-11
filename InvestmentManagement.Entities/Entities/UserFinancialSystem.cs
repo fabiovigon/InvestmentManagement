@@ -12,6 +12,7 @@ namespace InvestmentManagement.Entities.Entities
         public int Id { get; set; }
         public string Email { get; set; }
         public bool Administrator { get; set; }
+        public bool CurrentSystem { get; set; }
 
         [ForeignKey("FinancialSystem")]
         [Column(Order = 1 )]

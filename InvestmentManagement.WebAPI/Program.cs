@@ -3,6 +3,8 @@ using InvestmentManagement.Domain.Interfaces.ICategories;
 using InvestmentManagement.Domain.Interfaces.IFinancialSystem;
 using InvestmentManagement.Domain.Interfaces.IProductFinancial;
 using InvestmentManagement.Domain.Interfaces.IUserFinancialSystem;
+using InvestmentManagement.Domain.Interfaces.Services;
+using InvestmentManagement.Domain.Services;
 using InvestmentManagement.Entities.Entities;
 using InvestmentManagement.Infra.Configurations;
 using InvestmentManagement.Infra.Respositories;
@@ -24,13 +26,21 @@ builder.Services.AddDbContext<ContextBase>(options =>
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ContextBase>();
 
+//interaface and repository
 builder.Services.AddSingleton(typeof(InterfaceGeneric<>), typeof(RepositoriesGenerics<>));
 builder.Services.AddSingleton<ICategories, CategoryRepository>();
 builder.Services.AddSingleton<IFinancialSystem, FinancialSystemRepository>();
 builder.Services.AddSingleton<IProductFinancial, ProductFinancialRepository>();
 builder.Services.AddSingleton<IUserFinancialSystem, UserFinancialSystemRepository>();
 
+//Services
+builder.Services.AddSingleton<ICategoryService, CategoryService>();
+builder.Services.AddSingleton<IFinancialSystemService, FinancialSystemService>();
+builder.Services.AddSingleton<IProductFinancialService, ProductFinancialService>();
+builder.Services.AddSingleton<IUserFinancialSystemService, UserFinancialSystemService>();
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

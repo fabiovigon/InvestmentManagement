@@ -13,7 +13,7 @@ namespace InvestmentManagement.Entities.Entities
         public int Month { get; set; }
         public int Year { get; set; }
         public int Day { get; set; }
-        public int ClosingDay { get; set; }
+        public DateTime ClosingDay { get; set; }
         public bool SendEmailProductExpiration { get; set; }
     }
 }

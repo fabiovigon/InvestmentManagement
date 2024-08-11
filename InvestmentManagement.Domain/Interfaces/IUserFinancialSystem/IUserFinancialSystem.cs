@@ -10,7 +10,7 @@ namespace InvestmentManagement.Domain.Interfaces.IUserFinancialSystem
 {
     public interface IUserFinancialSystem : InterfaceGeneric<UserFinancialSystem>
     {
-        Task<IList<UserFinancialSystem>> UserFinancialSystemList(int IdSystem);
+        Task<IList<UserFinancialSystem>> GetUserFinancialSystemList(int IdSystem);
 
         Task RemoveUsers(List<UserFinancialSystem> users);
 

@@ -10,6 +10,7 @@ namespace InvestmentManagement.Domain.Interfaces.IProductFinancial
 {
     public interface IProductFinancial : InterfaceGeneric<ProductFinancial>
     {
-        Task<IList<ProductFinancial>> UserProductFinancialList (string userEmail);
+        Task<IList<ProductFinancial>> GetUserProductFinancialList(string userEmail);
+        Task<IList<ProductFinancial>> GetProductFinancialList();
     }
 }

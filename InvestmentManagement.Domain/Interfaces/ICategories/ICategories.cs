@@ -10,6 +10,6 @@ namespace InvestmentManagement.Domain.Interfaces.ICategories
 {
     public interface ICategories : InterfaceGeneric<Categories>
     {
-        Task<IList<Categories>> UserCategoriesList(string userEmail);
+        Task<IList<Categories>> GetUserCategoriesList(string userEmail);
     }
 }
