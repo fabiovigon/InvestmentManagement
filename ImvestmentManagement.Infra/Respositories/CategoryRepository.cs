@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 
 namespace InvestmentManagement.Infra.Respositories
 {
-    public class CategoryRespository : RepositoriesGenerics<Categories>, ICategories
+    public class CategoryRepository : RepositoriesGenerics<Categories>, ICategories
     {
+        public Task<IList<Categories>> UserCategoriesList(string userEmail)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

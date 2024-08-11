@@ -11,5 +11,19 @@ namespace InvestmentManagement.Infra.Respositories
 {
     public class UserFinancialSystemRepository : RepositoriesGenerics<UserFinancialSystem>, IUserFinancialSystem
     {
+        public Task<UserFinancialSystem> GetUserByEmail(string userEmail)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RemoveUsers(List<UserFinancialSystem> users)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IList<UserFinancialSystem>> UserFinancialSystemList(int IdSystem)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

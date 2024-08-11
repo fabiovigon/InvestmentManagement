@@ -10,5 +10,6 @@ namespace InvestmentManagement.Domain.Interfaces.IFinancialSystem
 {
     public interface IFinancialSystem : InterfaceGeneric<FinancialSystem>
     {
+        Task<IList<FinancialSystem>> UserFinancialSystemList(string userEmail);
     }
 }

@@ -11,5 +11,9 @@ namespace InvestmentManagement.Infra.Respositories
 {
     public class ProductFinancialRepository : RepositoriesGenerics<ProductFinancial>, IProductFinancial
     {
+        public Task<IList<ProductFinancial>> UserProductFinancialList(string userEmail)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

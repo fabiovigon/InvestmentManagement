@@ -1,6 +1,11 @@
 using InvestmentManagement.Domain.Interfaces.Generics;
+using InvestmentManagement.Domain.Interfaces.ICategories;
+using InvestmentManagement.Domain.Interfaces.IFinancialSystem;
+using InvestmentManagement.Domain.Interfaces.IProductFinancial;
+using InvestmentManagement.Domain.Interfaces.IUserFinancialSystem;
 using InvestmentManagement.Entities.Entities;
 using InvestmentManagement.Infra.Configurations;
+using InvestmentManagement.Infra.Respositories;
 using InvestmentManagement.Infra.Respositories.Generics;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +25,10 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddEntityFrameworkStores<ContextBase>();
 
 builder.Services.AddSingleton(typeof(InterfaceGeneric<>), typeof(RepositoriesGenerics<>));
+builder.Services.AddSingleton<ICategories, CategoryRepository>();
+builder.Services.AddSingleton<IFinancialSystem, FinancialSystemRepository>();
+builder.Services.AddSingleton<IProductFinancial, ProductFinancialRepository>();
+builder.Services.AddSingleton<IUserFinancialSystem, UserFinancialSystemRepository>();
 
 var app = builder.Build();
 

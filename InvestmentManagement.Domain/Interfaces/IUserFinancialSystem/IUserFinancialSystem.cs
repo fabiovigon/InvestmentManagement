@@ -10,5 +10,10 @@ namespace InvestmentManagement.Domain.Interfaces.IUserFinancialSystem
 {
     public interface IUserFinancialSystem : InterfaceGeneric<UserFinancialSystem>
     {
+        Task<IList<UserFinancialSystem>> UserFinancialSystemList(int IdSystem);
+
+        Task RemoveUsers(List<UserFinancialSystem> users);
+
+        Task<UserFinancialSystem> GetUserByEmail(string userEmail);
     }
 }
