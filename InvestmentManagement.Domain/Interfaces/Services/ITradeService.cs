@@ -9,6 +9,6 @@ namespace InvestmentManagement.Domain.Interfaces.Services
 {
     public interface ITradeService
     {
-        Task<Trade> CreateTradeAsync(Trade trade);
+        Task<Trade> TradeAsync(Trade trade);
     }
 }

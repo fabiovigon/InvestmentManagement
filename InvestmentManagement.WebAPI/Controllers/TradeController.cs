@@ -4,6 +4,7 @@ using InvestmentManagement.Domain.Interfaces.Services;
 using InvestmentManagement.Entities.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace InvestmentManagement.WebAPI.Controllers
 {
@@ -21,16 +22,17 @@ namespace InvestmentManagement.WebAPI.Controllers
 
         [HttpGet("/api/GetTradesForUser")]
         [Produces("application/json")]
-        public async Task<object> GetTradesForUser(string userEmail)
+        public async Task<object> GetTradesForUser([Required] string userEmail, [Required] string NameProduct, [FromQuery] DateTime? tradeDate = null)
         {
-            return await _iTrade.GetTradesForUserAsync(userEmail);
+        
+            return await _iTrade.GetTradesForUserAsync(userEmail, NameProduct, tradeDate);
         }
 
-        [HttpPost("/api/CreateTrade")]
+        [HttpPost("/api/Trade")]
         [Produces("application/json")]
-        public async Task<object> CreateTrade(Trade trade)
+        public async Task<object> Trade(Trade trade)
         {
-            await _iTradeService.CreateTradeAsync(trade);
+            await _iTradeService.TradeAsync(trade);
 
             return trade;
         }

@@ -9,7 +9,7 @@ namespace InvestmentManagement.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class FinancialSystemController : ControllerBase
     {
         private readonly IFinancialSystem _iFinancialSystem;

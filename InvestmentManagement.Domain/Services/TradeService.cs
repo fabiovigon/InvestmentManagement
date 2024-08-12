@@ -23,12 +23,15 @@ namespace InvestmentManagement.Domain.Services
             _iTrade = iTrade;
         }
 
-        public async Task<Trade> CreateTradeAsync(Trade trade)
+        public async Task<Trade> TradeAsync(Trade trade)
         {
-            if (trade.TradeType != "Buy" && trade.TradeType != "Sell")
+            if (trade.TradeType.ToLower() != "buy" && trade.TradeType.ToLower() != "sell")
             {
                 throw new ArgumentException("Tipo de negociação inválido. Escolha entre 'Buy' ou 'Sell'.");
             }
+
+            bool NoAddTrade = false;
+            var tradeExists = await GetTradesForUserAsync(trade.UserEmail, trade.Name);
 
             var product = await _productFinancial.GetById(trade.ProductId);
             if (product == null)
@@ -36,38 +39,44 @@ namespace InvestmentManagement.Domain.Services
                 throw new ArgumentException("Produto não encontrado.");
             }
 
-            if (trade.TradeType == "Buy")
+            if (trade.TradeType.ToLower() == "buy")
             {
                 trade.Quantity += trade.Quantity;
                 product.Quantity -= trade.Quantity;
 
-
-                trade.Amount = trade.Quantity * product.Value; 
+                trade.Amount = trade.Quantity * product.Value;
             }
-
-            else if (trade.TradeType == "Sell")
+            else if (trade.TradeType.ToLower() == "sell")
             {
                 if (trade.Quantity < trade.Quantity)
                 {
                     throw new ArgumentException("Quantidade insuficiente para venda.");
                 }
 
-                trade.Quantity -= trade.Quantity; 
-                product.Quantity += trade.Quantity; 
+                trade.Quantity -= trade.Quantity;
+                product.Quantity += trade.Quantity;
+
+                await _iTrade.Update(trade);
+                NoAddTrade = true;
+
             }
 
             await _productFinancialService.UpdateProductFinancial(product);
 
             trade.TradeDate = DateTime.UtcNow;
 
-            await _iTrade.Add(trade);
+            if (!NoAddTrade)
+            {
+                await _iTrade.Add(trade);
+            }
 
             return trade;
         }
 
-        public async Task<IEnumerable<Trade>> GetTradesForUserAsync(string userEmail, DateTime? tradeDate = null)
+
+        public async Task<IEnumerable<Trade>> GetTradesForUserAsync(string userEmail, string Name ,DateTime? tradeDate = null)
         {
-            return await _iTrade.GetTradesForUserAsync(userEmail, tradeDate);
+            return await _iTrade.GetTradesForUserAsync(userEmail, Name ,tradeDate);
         }
     }
 }

@@ -10,6 +10,6 @@ namespace InvestmentManagement.Domain.Interfaces.ITrade
 {
     public interface ITrade : InterfaceGeneric<Trade>
     {
-        Task<IEnumerable<Trade>> GetTradesForUserAsync(string userEmail, DateTime? tradeDate = null);
+        Task<IEnumerable<Trade>> GetTradesForUserAsync(string userEmail, string Name, DateTime? tradeDate = null);
     }
 }

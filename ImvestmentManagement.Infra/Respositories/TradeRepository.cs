@@ -20,13 +20,13 @@ namespace InvestmentManagement.Infra.Respositories
             _optionsBuilder = new DbContextOptions<ContextBase>();
         }
 
-        public async Task<IEnumerable<Trade>> GetTradesForUserAsync(string userEmail, DateTime? tradeDate = null)
+        public async Task<IEnumerable<Trade>> GetTradesForUserAsync(string userEmail,string Name, DateTime? tradeDate = null)
         {
             using (var dbContext = new ContextBase(_optionsBuilder))
             {
                 var query = dbContext.Trade.AsQueryable();
 
-                query = query.Where(t => t.UserEmail == userEmail);
+                query = query.Where(t => t.UserEmail == userEmail && t.Name == Name);
 
                 if (tradeDate.HasValue)
                 {
