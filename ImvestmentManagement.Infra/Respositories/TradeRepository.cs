@@ -36,7 +36,6 @@ namespace InvestmentManagement.Infra.Respositories
                 return await query.AsNoTracking().ToListAsync();
             }
         }
-        }
     }
 }
 

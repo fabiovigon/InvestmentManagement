@@ -2,6 +2,7 @@ using InvestmentManagement.Domain.Interfaces.Generics;
 using InvestmentManagement.Domain.Interfaces.ICategories;
 using InvestmentManagement.Domain.Interfaces.IFinancialSystem;
 using InvestmentManagement.Domain.Interfaces.IProductFinancial;
+using InvestmentManagement.Domain.Interfaces.ITrade;
 using InvestmentManagement.Domain.Interfaces.IUserFinancialSystem;
 using InvestmentManagement.Domain.Interfaces.Services;
 using InvestmentManagement.Domain.Services;
@@ -62,12 +63,14 @@ builder.Services.AddSingleton<ICategories, CategoryRepository>();
 builder.Services.AddSingleton<IFinancialSystem, FinancialSystemRepository>();
 builder.Services.AddSingleton<IProductFinancial, ProductFinancialRepository>();
 builder.Services.AddSingleton<IUserFinancialSystem, UserFinancialSystemRepository>();
+builder.Services.AddSingleton<ITrade, TradeRepository>();
 
 //Services
 builder.Services.AddSingleton<ICategoryService, CategoryService>();
 builder.Services.AddSingleton<IFinancialSystemService, FinancialSystemService>();
 builder.Services.AddSingleton<IProductFinancialService, ProductFinancialService>();
 builder.Services.AddSingleton<IUserFinancialSystemService, UserFinancialSystemService>();
+builder.Services.AddSingleton<ITradeService, TradeService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
              .AddJwtBearer(option =>
