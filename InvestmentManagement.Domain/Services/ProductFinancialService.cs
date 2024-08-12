@@ -31,6 +31,11 @@ namespace InvestmentManagement.Domain.Services
 
         }
 
+        public Task<object> GeneratePurchaseStatement(string userEmail)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task UpdateProductFinancial(ProductFinancial productFinancial)
         {
             var date = DateTime.UtcNow;

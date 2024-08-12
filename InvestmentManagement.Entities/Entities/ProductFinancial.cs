@@ -13,6 +13,7 @@ namespace InvestmentManagement.Entities.Entities
         public decimal Value { get; set; }
         public int Month { get; set; }
         public int Year { get; set; }
+        public decimal Quantity { get; set; }
         public DateTime Dt_Inclusion  { get; set; }
         public DateTime Dt_Change { get; set; }
         public DateTime Dt_ExpiredProduct { get; set; }

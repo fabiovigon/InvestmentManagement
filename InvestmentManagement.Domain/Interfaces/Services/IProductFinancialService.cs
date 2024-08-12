@@ -11,5 +11,6 @@ namespace InvestmentManagement.Domain.Interfaces.Services
     {
         Task AddProductFinancial(ProductFinancial productFinancial);
         Task UpdateProductFinancial(ProductFinancial productFinancial);
+        Task<object> GeneratePurchaseStatement(string userEmail);
     }
 }

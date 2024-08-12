@@ -19,7 +19,7 @@ namespace InvestmentManagement.Infra.Configurations
         public DbSet<UserFinancialSystem> UserFinancialSystem { get; set; }
         public DbSet<Categories> Categories { get; set; }
         public DbSet<ProductFinancial> ProductFinancial { get; set; }
-        public DbSet<BuyInvestment> BuyInvestment { get; set; }
+        public DbSet<Trade> Trade { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
