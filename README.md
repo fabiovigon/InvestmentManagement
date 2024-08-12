@@ -21,19 +21,19 @@ Clonar o Repositório
 
 Clone o repositório para sua máquina local usando o comando:
 
-git clone https://github.com/seu-usuario/seu-repositorio.git
-Restaurar Dependências
+-git clone https://github.com/fabiovigon/InvestmentManagement.git
+
+Abra o projeto e restaure as dependencias com o comando CTRL+B ou clicando na Solution com o botão direito e Build Solution
 
 Navegue até a raiz do projeto e execute o comando para restaurar as dependências:
 
-Copiar código
-dotnet restore
+-dotnet restore
 
 Configurar a Conexão com o Banco de Dados
 
 Edite o arquivo appsettings.json na camada Presentation para configurar a conexão com o banco de dados:
 
-Copiar código
+- Copiar código
 {
   "ConnectionStrings": {
     "DefaultConnection": "Server=seu-servidor;Database=seu-banco-de-dados;User Id=seu-usuario;Password=sua-senha;"
@@ -46,7 +46,7 @@ Aplicar Migrations
 Abra a aba Tools e navegue até a opção NuGet Pakcage manager e clique em Package Manager console.
 após isso em Default project selelcione o projeto Infra. feito isso rode os comando abaixo
 
-1. Add-migration Criando-database
+Add-migration Criando-database
 
 2.Update-Database.
 
