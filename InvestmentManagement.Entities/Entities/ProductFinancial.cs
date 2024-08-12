@@ -10,13 +10,16 @@ namespace InvestmentManagement.Entities.Entities
     [Table("ProductFinancial")]
     public class ProductFinancial : Base
     {
-        public int Value { get; set; }
+        public decimal Value { get; set; }
         public int Month { get; set; }
         public int Year { get; set; }
         public DateTime Dt_Inclusion  { get; set; }
         public DateTime Dt_Change { get; set; }
         public DateTime Dt_ExpiredProduct { get; set; }
         public bool ProductExpired { get; set; }
+
+        [ForeignKey("UserFinancialSystem")]
+        public int IdUserFinancialSystem { get; set; }
 
         [ForeignKey("Categories")]
         [Column(Order = 1)]

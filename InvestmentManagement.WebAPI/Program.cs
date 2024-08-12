@@ -9,7 +9,10 @@ using InvestmentManagement.Entities.Entities;
 using InvestmentManagement.Infra.Configurations;
 using InvestmentManagement.Infra.Respositories;
 using InvestmentManagement.Infra.Respositories.Generics;
+using InvestmentManagement.WebAPI.Token;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +42,36 @@ builder.Services.AddSingleton<IFinancialSystemService, FinancialSystemService>()
 builder.Services.AddSingleton<IProductFinancialService, ProductFinancialService>();
 builder.Services.AddSingleton<IUserFinancialSystemService, UserFinancialSystemService>();
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddJwtBearer(option =>
+             {
+                 option.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuer = false,
+                     ValidateAudience = false,
+                     ValidateLifetime = true,
+                     ValidateIssuerSigningKey = true,
+
+                     ValidIssuer = "Teste.Securiry.Bearer",
+                     ValidAudience = "Teste.Securiry.Bearer",
+                     IssuerSigningKey = JwtSecurityKey.Create("A_Much_Longer_Secret_Key_With_Enough_Length_32_Chars")
+                 };
+
+                 option.Events = new JwtBearerEvents
+                 {
+                     OnAuthenticationFailed = context =>
+                     {
+                         Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
+                         return Task.CompletedTask;
+                     },
+                     OnTokenValidated = context =>
+                     {
+                         Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
+                         return Task.CompletedTask;
+                     }
+                 };
+             });
+
 var app = builder.Build();
 
 
@@ -51,6 +84,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

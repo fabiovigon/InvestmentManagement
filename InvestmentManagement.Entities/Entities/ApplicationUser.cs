@@ -10,10 +10,6 @@ namespace InvestmentManagement.Entities.Entities
 {
     public class ApplicationUser : IdentityUser
     {
-        [Column("CPF")]
         public string CPF { get; set; }
-
-        [Column("Balance")]
-        public string  Balance { get; set; }
     }
 }

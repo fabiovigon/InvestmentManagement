@@ -19,6 +19,7 @@ namespace InvestmentManagement.Infra.Configurations
         public DbSet<UserFinancialSystem> UserFinancialSystem { get; set; }
         public DbSet<Categories> Categories { get; set; }
         public DbSet<ProductFinancial> ProductFinancial { get; set; }
+        public DbSet<BuyInvestment> BuyInvestment { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -41,9 +42,7 @@ namespace InvestmentManagement.Infra.Configurations
         {
             //return "Data Source=NBQSP-FC693;Initial Catalog=FINANCEIRO_2023;Integrated Security=False;User ID=sa;Password=1234;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
 
-            return "Data Source=DESKTOP-FHMMBEM;Initial Catalog=DB_Financial;Integrated Security=True"; // Evitar
+            return "Data Source=DESKTOP-FHMMBEM;Initial Catalog=DB_Financial;Integrated Security=True;TrustServerCertificate=True";
         }
-
-
     }
 }
